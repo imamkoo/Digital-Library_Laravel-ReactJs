@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import MasterLayout from "./layouts/admin/MasterLayout";
 
 import routes from "./routes/routes";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+import MasterLayout from "./layouts/admin/MasterLayout";
 import Home from "./components/frontend/Home";
 import Login from "./components/frontend/auth/Login";
 import Register from "./components/frontend/auth/Register";
-import AdminPrivateRoute from "./AdminPrivateRoute";
+import Page403 from "./components/errors/Page403.js";
+import Page404 from "./components/errors/Page404.js";
 
 import axios from "axios";
 
@@ -28,6 +30,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/403" element={<Page403 />} />
+          <Route path="/404" element={<Page404 />} />
 
           <Route
             path="login"

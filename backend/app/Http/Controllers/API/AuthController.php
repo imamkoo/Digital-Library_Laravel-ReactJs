@@ -70,13 +70,23 @@ class AuthController extends Controller
                     'message' => 'Invalid Credentials'
                 ]);
             } else {
-                $token = $user->createToken($user->email . '_Token')->plainTextToken;
+
+                if ($user->role == 1) //1=admin
+                {
+                    $role = 'admin';
+                    $token = $user->createToken($user->email . '_AdminToken', ['server:admin'])->plainTextToken;
+                } else {
+                    $role = '';
+                    $token = $user->createToken($user->email . '_Token', [''])->plainTextToken;
+                }
+
 
                 return response()->json([
                     'status' => 200,
                     'username' => $user->name,
                     'token' => $token,
-                    'message' => 'Logged In Successfully'
+                    'message' => 'Logged In Successfully',
+                    'role' => $role
                 ]);
             }
         }

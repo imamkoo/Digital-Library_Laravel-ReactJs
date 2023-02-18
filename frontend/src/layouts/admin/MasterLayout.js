@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "../../assets/admin/css/styles.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "../../assets/admin/js/scripts";
@@ -7,8 +7,6 @@ import "../../assets/admin/js/scripts";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
-
-import routes from "../../routes/routes";
 
 const MasterLayout = () => {
   return (
@@ -21,19 +19,7 @@ const MasterLayout = () => {
 
         <div id="layoutSidenav_content">
           <main>
-            {/* <Outlet /> */}
-
-            <Routes>
-              {routes
-                .filter((route) => route.component)
-                .map(({ path, component: Component }, idx) => (
-                  <Route key={idx} path={path} element={<Component />} />
-                ))}
-              <Route
-                path="/admin"
-                element={<Navigate to="/admin/dashboard" />}
-              />
-            </Routes>
+            <Outlet />
           </main>
           <Footer />
         </div>
