@@ -6,6 +6,8 @@ import routes from "./routes/routes";
 import Home from "./components/frontend/Home";
 import Login from "./components/frontend/auth/Login";
 import Register from "./components/frontend/auth/Register";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+
 import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8000/";
@@ -49,15 +51,19 @@ function App() {
             }
           />
 
-          <Route path="/admin" element={<MasterLayout />}>
-            {routes
-              .filter((route) => route.component)
-              .map(({ path, component: Component }) => (
-                <Route key={path} path={path} element={<Component />} />
-              ))}
-            <Route index element={<Navigate to="/admin/dashboard" />} />
+          <Route element={<AdminPrivateRoute />}>
+            <Route path="/admin" element={<MasterLayout />}>
+              {routes
+                .filter((route) => route.component)
+                .map(({ path, component: Component }) => (
+                  <Route key={path} path={path} element={<Component />} />
+                ))}
+              <Route index element={<Navigate to="/admin/dashboard" />} />
+            </Route>
           </Route>
         </Routes>
+
+        {/* <AdminPrivateRoute component={MasterLayout} path="/admin" exact /> */}
       </BrowserRouter>
     </div>
   );
