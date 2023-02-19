@@ -66,8 +66,6 @@ function App() {
             </Route>
           </Route>
         </Routes>
-
-        {/* <AdminPrivateRoute component={MasterLayout} path="/admin" exact /> */}
       </BrowserRouter>
     </div>
   );

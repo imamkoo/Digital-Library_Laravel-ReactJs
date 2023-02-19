@@ -44,7 +44,7 @@ function Category() {
     });
   };
 
-  var display_errors = [];
+  let display_errors = [];
   if (categoryInput.error_list) {
     display_errors = [
       categoryInput.error_list.slug,
@@ -57,16 +57,15 @@ function Category() {
     <div className="container-fluid px-4">
       {display_errors.map((item) => {
         return (
-          <p className="mb-1" key={item}>
+          <p className="mb-1 text-danger" key={item}>
             {item}
           </p>
         );
       })}
-
       <div className="card mt-4">
         <div className="card-header">
           <h4>
-            Add Category
+            <h1 className="mt-4">Add Category</h1>
             <Link
               to="/admin/view-category"
               className="btn btn-dark btn-sm float-end"
@@ -123,7 +122,7 @@ function Category() {
                     value={categoryInput.slug}
                     className="form-control"
                   />
-                  <span>{categoryInput.error_list.slug}</span>
+                  {/* <span>{categoryInput.error_list.slug}</span> */}
                 </div>
                 <div className="form-group mb-3">
                   <label>Name</label>
@@ -191,7 +190,10 @@ function Category() {
                 </div>
               </div>
             </div>
-            <button type="submit" className="btn btn-dark px-4 float-end">
+            <button
+              type="submit"
+              className="btn btn-dark px-4 mt-4 float-start"
+            >
               Submit
             </button>
           </form>

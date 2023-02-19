@@ -44,7 +44,7 @@ function AdminPrivateRoute() {
         navigate("/403");
       } else if (error.response.status === 404) {
         //Page Not Found
-        swal("404 Error", "Url/Page Not Found", "warning");
+        swal("404 Error", "Page Not Found", "warning");
         navigate("/404");
       }
       return Promise.reject(error);
