@@ -5,12 +5,18 @@ import routes from "./routes/routes";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import MasterLayout from "./layouts/admin/MasterLayout";
 import Home from "./components/frontend/Home";
+import About from "./components/frontend/About";
+import Contact from "./components/frontend/Contact";
 import Login from "./components/frontend/auth/Login";
 import Register from "./components/frontend/auth/Register";
 import Page403 from "./components/errors/Page403.js";
 import Page404 from "./components/errors/Page404.js";
 
 import axios from "axios";
+import ViewCategory from "./components/frontend/collections/ViewCategory";
+import ViewProduct from "./components/frontend/collections/ViewProduct";
+import ProductDetail from "./components/frontend/collections/ProductDetail";
+import Cart from "./components/frontend/Cart";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/json";
@@ -30,6 +36,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/collections" element={<ViewCategory />} />
+          <Route path="/collections/:slug" element={<ViewProduct />} />
+          <Route
+            path="/collections/:category/:product"
+            element={<ProductDetail />}
+          />
+          <Route path="/cart" element={<Cart />} />
+
           <Route path="/403" element={<Page403 />} />
           <Route path="/404" element={<Page404 />} />
 

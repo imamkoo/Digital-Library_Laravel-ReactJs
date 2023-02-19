@@ -50,7 +50,6 @@ class CategoryController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            // 'meta-title' => 'required|max:225',
             'slug' => 'required|max:225',
             'name' => 'required|max:225',
         ]);
@@ -67,7 +66,7 @@ class CategoryController extends Controller
             $category->meta_keyword = $request->input('meta_keyword');
             $category->meta_descrip = $request->input('meta_descrip');
             $category->slug = $request->input('slug');
-            $category->name = $request->input('meta_title');
+            $category->name = $request->input('name');
             $category->description = $request->input('description');
             $category->status = $request->input('status') == true ? '1' : '0';
             $category->save();
@@ -82,7 +81,6 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            // 'meta-title' => 'required|max:225',
             'slug' => 'required|max:225',
             'name' => 'required|max:225',
         ]);
@@ -100,7 +98,7 @@ class CategoryController extends Controller
                 $category->meta_keyword = $request->input('meta_keyword');
                 $category->meta_descrip = $request->input('meta_descrip');
                 $category->slug = $request->input('slug');
-                $category->name = $request->input('meta_title');
+                $category->name = $request->input('name');
                 $category->description = $request->input('description');
                 $category->status = $request->input('status') == true ? '1' : '0';
                 $category->save();
